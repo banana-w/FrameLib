@@ -35,6 +35,10 @@ namespace TestImage.Frame
                 {
                     Width = (int)Type1.ImageWidth,
                     Height = (int)Type1.ImageHeight,
+                    MarginBottom = (int)Type1.MarginBottom,
+                    MarginLeft = (int)Type1.MarginLeft,
+                    MarginRight = (int)Type1.MarginRight,
+                    MarginTop = (int)Type1.MarginTop,   
                 },
             },
             Theme = FrameTheme.FALL
