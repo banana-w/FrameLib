@@ -5,7 +5,7 @@ namespace TestImage.Render;
 
 public class RenderManager
 {
-    public static void Render(FrameType frameType,string fileName, List<ImageInFrame> imageInFrames)
+    public static Bitmap Render(FrameType frameType,string fileName, List<ImageInFrame> imageInFrames)
     {
         var itemHeight = imageInFrames[0].Height;
         var itemWidth = imageInFrames[0].Width;
@@ -56,7 +56,7 @@ public class RenderManager
         Bitmap portrait = result0;
         var twoItems = frameType.BackgroundImages.Where(x => x.Item2.Equals(fileName)).FirstOrDefault();
         var image = twoItems.Item1;
-        if (image == null) return;
+        if (image == null) return null;
 
         Bitmap frame = new Bitmap(image); 
         
@@ -72,14 +72,7 @@ public class RenderManager
             g.DrawImage(frame, 0, 0, frame.Width, frame.Height);
         }
 
-        result.Save("D:/testmagik/result1.jpg");
-
-        // Giải phóng bộ nhớ
-        portrait.Dispose();
-        frame.Dispose();
-        result.Dispose();
-        result0.Dispose();
-
+        return result;
     }
     public static Bitmap CombineImage(FrameType frameType, List<ImageInFrame> imageInFrames)
     {
