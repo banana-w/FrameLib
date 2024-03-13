@@ -71,13 +71,13 @@ public class RenderManager
             // Vẽ tấm hình frame lên bitmap result
             g.DrawImage(frame, 0, 0, frame.Width, frame.Height);
         }
-
+        result.Save("D:/testmagik/result3.jpg");
         return result;
     }
-    public static Bitmap CombineImage(FrameType frameType, List<Image> imageInFrames)
+    public static Bitmap CombineImage(FrameType frameType, List<ImageInFrame> imageInFrames)
     {
-        var itemHeight = frameType.ImageInFrames[0].Height;
-        var itemWidth = frameType.ImageInFrames[0].Width;
+        var itemHeight = imageInFrames[0].Height;
+        var itemWidth = imageInFrames[0].Width;
         var totalWidth = frameType.Width;
         var totalHeight = frameType.Height;
 
@@ -86,16 +86,16 @@ public class RenderManager
         Bitmap[] items = new Bitmap[imageInFrames.Count];
         for (int i = 0; i < items.Length; i++)
         {
-            items[i] = new Bitmap(imageInFrames[i]);
+            items[i] = new Bitmap(imageInFrames[i].Image);
         }
 
         using (Graphics g = Graphics.FromImage(result0))
         {
             int index = 0;
-            int marginLeft = frameType.ImageInFrames[0].MarginLeft;
-            int marginTop = frameType.ImageInFrames[0].MarginTop;
-            int marginRight = frameType.ImageInFrames[0].MarginRight;
-            int marginBottom = frameType.ImageInFrames[0].MarginBottom;
+            int marginLeft = imageInFrames[0].MarginLeft;
+            int marginTop = imageInFrames[0].MarginTop;
+            int marginRight = imageInFrames[0].MarginRight;
+            int marginBottom = imageInFrames[0].MarginBottom;
 
             // Tính tổng lề của các cạnh
             int totalHorizontalMargin = marginLeft + marginRight;

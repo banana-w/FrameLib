@@ -30,7 +30,7 @@ namespace TestImage.Utils
                     // Lặp qua từng đường dẫn và tải hình ảnh vào danh sách
                     foreach (string imagePath in imagePaths)
                     {
-                        using (FileStream fs = new FileStream(imagePath, FileMode.Open, FileAccess.Read))
+                        using (FileStream fs = new(imagePath, FileMode.Open, FileAccess.Read))
                         {
                             Image img = Image.FromStream(fs);
                             string name = Path.GetFileName(imagePath);

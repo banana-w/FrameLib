@@ -117,21 +117,22 @@ class Program
         list.Add(image2);
         //list.Add(image5);
 
-        //Frames.Instance.LoadListType();
-        //Frames.Instance.LoadTypeImage("C:/Users/Admin/Desktop/PNG/TYPE1", "1a");
-        //Frames.Instance.LoadTypeImage("C:/Users/Admin/Desktop/PNG", "2a");
-        ////RenderManager.Render(Frames.Instance.GetType("1a"), "FALL_abc.png", list);
+        Frames.Instance.LoadListType();
+        Frames.Instance.LoadTypeImage("C:/Users/Admin/Desktop/PNG/TYPE1", "1a");
+        Frames.Instance.LoadTypeImage("C:/Users/Admin/Desktop/PNG", "2a");
+        //RenderManager.Render(Frames.Instance.GetType("1a"), "FALL_abc.png", list);
         //Bitmap result = RenderManager.CombineImage(Frames.Instance.GetType("1a"), list);
 
         //RenderManager.FrameImage(Frames.Instance.GetType("1a"), result, "FALL_abc.png");
+        RenderManager.Render(Frames.Instance.GetType("1a"), "FALL_abc.png", list);
 
-        //var savePath = "D:/testmagik";
-        //var fileName = "TYPE1.zip";
-        //var zipPath = savePath + "/"+fileName;
-        //var outputFolder = savePath+ "/TYPE1";
+        var savePath = "D:/testmagik";
+        var fileName = "TYPE1.zip";
+        var zipPath = savePath + "/" + fileName;
+        var outputFolder = savePath + "/TYPE1";
         ////DriveDownload.DriveDownloadFile(@"C:\Users\Admin\Downloads\credentials.json", savePath, fileName);
 
-        //Util.ExtractZipContent(zipPath,"",outputFolder);
-        
+        Util.ExtractZipContent(zipPath, "", outputFolder);
+
     }
 }

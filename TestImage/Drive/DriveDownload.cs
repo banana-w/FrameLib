@@ -15,8 +15,9 @@ namespace TestImage.Drive
     public class DriveDownload
     {
 
-        public static void DriveDownloadFile(string authPath, string saveFilePath, string name)
+        public static string DriveDownloadFile(string authPath, string saveFilePath, string name)
         {
+            string fullFilePath = null;
             try
             {
 
@@ -44,7 +45,11 @@ namespace TestImage.Drive
 
                 var request = service.Files.Get(listSearchFiles.Files[0].Id);
                 string fileName = request.Execute().Name;
-                string fullFilePath = Path.Combine(saveTo, fileName);
+                string fileExtension = Path.GetExtension(fileName);
+                string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(fileName);
+                string uniqueFileName = $"{fileNameWithoutExtension}_{DateTime.Now.Ticks}{fileExtension}";
+                fullFilePath = Path.Combine(saveTo, uniqueFileName);
+
                 var stream = new FileStream(fullFilePath, FileMode.CreateNew, FileAccess.Write);
 
                 // Add a handler which will be notified on progress changes.
@@ -76,6 +81,7 @@ namespace TestImage.Drive
                     };
                 request.Download(stream);
                 stream.Close();
+                return fullFilePath;
 
             }
             catch (Exception e)
@@ -90,6 +96,7 @@ namespace TestImage.Drive
                     throw;
                 }
             }
+            return fullFilePath;
         }
 
     }

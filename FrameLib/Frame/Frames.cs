@@ -41,10 +41,11 @@ namespace TestImage.Frame
                     MarginTop = (int)Type1.MarginTop,   
                 },
             },
-            Theme = FrameTheme.FALL
+           
         };
         readonly FrameType type2 = new()
-        {
+        {   
+            Name = "Frame 6 hinh",
             Width = (int)Type2.Width,
             Height = (int)Type2.Height,
             Colum = (int)Type2.Col,
@@ -56,10 +57,14 @@ namespace TestImage.Frame
                 {
                     Width = (int) Type2.ImageWidth,
                     Height = (int) Type2.ImageHeight,
+                    MarginBottom = (int)Type2.MarginBottom,
+                    MarginLeft = (int)Type2.MarginLeft,
+                    MarginRight = (int)Type2.MarginRight,
+                    MarginTop = (int)Type2.MarginTop,
 
                 },
             },
-            Theme = FrameTheme.FALL
+            
         };
         public void LoadListType()
         {

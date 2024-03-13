@@ -19,7 +19,7 @@ public class PhotoParemeters
         FALL, CHRISTMAS
     }
     public enum Type1
-    {
+    {  
         Width = 1200, Height = 1800, Row = 2, Col = 2,
         ImageWidth = 534, ImageHeight = 532,
         MarginTop = 40,
@@ -31,6 +31,10 @@ public class PhotoParemeters
     {
         Width = 1200, Height = 1800, Row = 3, Col = 2,
         ImageWidth = 546, ImageHeight = 364,
+        MarginTop = 40,
+        MarginBottom = 40,
+        MarginLeft = 34,
+        MarginRight = 34
     }
 
 }
