@@ -69,21 +69,21 @@ namespace TestImage.Frame
         readonly FrameType type3 = new()
         {
             Name = "Frame 6 hinh",
-            Width = (int)Type2.Width,
-            Height = (int)Type2.Height,
-            Colum = (int)Type2.Col,
-            Row = (int)Type2.Row,
+            Width = (int)Type3.Width,
+            Height = (int)Type3.Height,
+            Colum = (int)Type3.Col,
+            Row = (int)Type3.Row,
             Code = "6a",
             ImageInFrames = new List<ImageInFrame>()
             {
                 new()
                 {
-                    Width = (int) Type2.ImageWidth,
-                    Height = (int) Type2.ImageHeight,
-                    MarginBottom = (int)Type2.MarginBottom,
-                    MarginLeft = (int)Type2.MarginLeft,
-                    MarginRight = (int)Type2.MarginRight,
-                    MarginTop = (int)Type2.MarginTop,
+                    Width = (int) Type3.ImageWidth,
+                    Height = (int) Type3.ImageHeight,
+                    MarginBottom = (int)Type3.MarginBottom,
+                    MarginLeft = (int)Type3.MarginLeft,
+                    MarginRight = (int)Type3.MarginRight,
+                    MarginTop = (int)Type3.MarginTop,
 
                 },
             },
@@ -93,6 +93,7 @@ namespace TestImage.Frame
         {
             FrameTypes.Add(type1);
             FrameTypes.Add(type2);
+            FrameTypes.Add(type3);
         }
         public bool LoadTypeImage(string folderPath, string id)
         {

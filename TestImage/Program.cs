@@ -125,7 +125,7 @@ class Program
         //Bitmap result = RenderManager.CombineImage(Frames.Instance.GetType("1a"), list);
 
         //RenderManager.FrameImage(Frames.Instance.GetType("1a"), result, "FALL_abc.png");
-        RenderManager.Render(Frames.Instance.GetType("2a"), "5x5 01.png", list);
+        RenderManager.Render(Frames.Instance.GetType("1a"), "FALL_abc.png", list);
 
         //var savePath = "D:/testmagik";
         //var fileName = "TYPE1.zip";
