@@ -45,7 +45,7 @@ namespace TestImage.Frame
         };
         readonly FrameType type2 = new()
         {   
-            Name = "Frame 6 hinh",
+            Name = "Frame 1 hinh",
             Width = (int)Type2.Width,
             Height = (int)Type2.Height,
             Colum = (int)Type2.Col,

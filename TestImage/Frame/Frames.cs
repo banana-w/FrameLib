@@ -56,6 +56,10 @@ namespace TestImage.Frame
                 {
                     Width = (int) Type2.ImageWidth,
                     Height = (int) Type2.ImageHeight,
+                    MarginBottom = (int)Type2.MarginBottom,
+                    MarginLeft = (int)Type2.MarginLeft,
+                    MarginRight = (int)Type2.MarginRight,
+                    MarginTop = (int)Type2.MarginTop,
 
                 },
             },

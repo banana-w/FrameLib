@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Drawing.Drawing2D;
 using TestImage.Frame;
 
 namespace TestImage.Render;
@@ -27,7 +28,7 @@ public class RenderManager
             int marginTop = imageInFrames[0].MarginTop;
             int marginRight = imageInFrames[0].MarginRight;
             int marginBottom = imageInFrames[0].MarginBottom;
-
+            
             // Tính tổng lề của các cạnh
             int totalHorizontalMargin = marginLeft + marginRight;
             int totalVerticalMargin = marginTop + marginBottom;
@@ -35,6 +36,8 @@ public class RenderManager
             // Tính tổng chiều rộng và chiều cao của mỗi item kèm theo lề
             int itemWidthWithMargin = itemWidth + totalHorizontalMargin;
             int itemHeightWithMargin = itemHeight + totalVerticalMargin;
+            
+            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
 
             // Vẽ từng item lên bitmap result với lề
             for (int row = 0; row < frameType.Row; row++) // 3 hàng
@@ -104,7 +107,7 @@ public class RenderManager
             // Tính tổng chiều rộng và chiều cao của mỗi item kèm theo lề
             int itemWidthWithMargin = itemWidth + totalHorizontalMargin;
             int itemHeightWithMargin = itemHeight + totalVerticalMargin;
-
+            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
             // Vẽ từng item lên bitmap result với lề
             for (int row = 0; row < frameType.Row; row++) // 3 hàng
             {
@@ -138,6 +141,7 @@ public class RenderManager
         // Tạo graphics object để vẽ lên bitmap result
         using (Graphics g = Graphics.FromImage(result))
         {
+            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
             // Vẽ tấm hình chân dung lên bitmap result
             g.DrawImage(portrait, 0, 0, frame.Width, frame.Height);
 

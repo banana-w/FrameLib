@@ -35,7 +35,7 @@ public class RenderManager
             // Tính tổng chiều rộng và chiều cao của mỗi item kèm theo lề
             int itemWidthWithMargin = itemWidth + totalHorizontalMargin;
             int itemHeightWithMargin = itemHeight + totalVerticalMargin;
-
+            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             // Vẽ từng item lên bitmap result với lề
             for (int row = 0; row < frameType.Row; row++) // 3 hàng
             {
