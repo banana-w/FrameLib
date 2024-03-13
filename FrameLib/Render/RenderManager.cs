@@ -74,7 +74,6 @@ public class RenderManager
             // Vẽ tấm hình frame lên bitmap result
             g.DrawImage(frame, 0, 0, frame.Width, frame.Height);
         }
-        result.Save("D:/testmagik/result3.jpg");
         return result;
     }
     public static Bitmap CombineImage(FrameType frameType, List<ImageInFrame> imageInFrames)

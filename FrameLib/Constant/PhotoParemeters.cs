@@ -31,10 +31,19 @@ public class PhotoParemeters
     {
         Width = 1806, Height = 1211, Row = 1, Col = 1,
         ImageWidth = 1625, ImageHeight = 1085,
-        MarginTop = 40,
-        MarginBottom = 40,
-        MarginLeft = 34,
-        MarginRight = 34
+        MarginTop = 65,
+        MarginBottom = 65,
+        MarginLeft = 65,
+        MarginRight = 65
+    }   
+    public enum Type3
+    {
+        Width = 1200, Height = 1800, Row = 3, Col = 2,
+        ImageWidth = 546, ImageHeight = 364,
+        MarginTop = 37,
+        MarginBottom = 37,
+        MarginLeft = 27,
+        MarginRight = 27
     }
 
 }

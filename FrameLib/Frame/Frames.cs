@@ -28,7 +28,7 @@ namespace TestImage.Frame
             Height = (int)Type1.Height,
             Colum = (int)Type1.Col,
             Row = (int)Type1.Row,
-            Code = "1a",
+            Code = "4a",
             ImageInFrames = new List<ImageInFrame>()
             {
                 new()
@@ -50,7 +50,7 @@ namespace TestImage.Frame
             Height = (int)Type2.Height,
             Colum = (int)Type2.Col,
             Row = (int)Type2.Row,
-            Code = "2a",
+            Code = "1a",
             ImageInFrames = new List<ImageInFrame>()
             {
                 new()
@@ -65,6 +65,29 @@ namespace TestImage.Frame
                 },
             },
             
+        };
+        readonly FrameType type3 = new()
+        {
+            Name = "Frame 6 hinh",
+            Width = (int)Type2.Width,
+            Height = (int)Type2.Height,
+            Colum = (int)Type2.Col,
+            Row = (int)Type2.Row,
+            Code = "6a",
+            ImageInFrames = new List<ImageInFrame>()
+            {
+                new()
+                {
+                    Width = (int) Type2.ImageWidth,
+                    Height = (int) Type2.ImageHeight,
+                    MarginBottom = (int)Type2.MarginBottom,
+                    MarginLeft = (int)Type2.MarginLeft,
+                    MarginRight = (int)Type2.MarginRight,
+                    MarginTop = (int)Type2.MarginTop,
+
+                },
+            },
+
         };
         public void LoadListType()
         {
