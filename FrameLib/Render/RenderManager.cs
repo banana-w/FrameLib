@@ -78,8 +78,8 @@ public class RenderManager
     }
     public static Bitmap CombineImage(FrameType frameType, List<Image> imageInFrames)
     {
-        var itemHeight = imageInFrames[0].Height;
-        var itemWidth = imageInFrames[0].Width;
+        var itemHeight = frameType.ImageInFrames[0].Height;
+        var itemWidth = frameType.ImageInFrames[0].Width;
         var totalWidth = frameType.Width;
         var totalHeight = frameType.Height;
 
