@@ -6,7 +6,7 @@ namespace TestImage.Render;
 
 public class RenderManager
 {
-    public static Bitmap Render(FrameType frameType,string fileName, List<ImageInFrame> imageInFrames)
+    public static Bitmap Render(FrameType frameType,string fileName, List<Image> imageInFrames)
     {
         var itemHeight = frameType.ImageInFrames[0].Height;
         var itemWidth = frameType.ImageInFrames[0].Width;
@@ -18,16 +18,16 @@ public class RenderManager
         Bitmap[] items = new Bitmap[imageInFrames.Count];
         for (int i = 0; i < items.Length; i++)
         {
-            items[i] = new Bitmap(imageInFrames[i].Image);
+            items[i] = new Bitmap(imageInFrames[i]);
         }
 
         using (Graphics g = Graphics.FromImage(result0))
         {
             int index = 0;
-            int marginLeft = imageInFrames[0].MarginLeft;
-            int marginTop = imageInFrames[0].MarginTop;
-            int marginRight = imageInFrames[0].MarginRight;
-            int marginBottom = imageInFrames[0].MarginBottom;
+            int marginLeft = frameType.ImageInFrames[0].MarginLeft;
+            int marginTop = frameType.ImageInFrames[0].MarginTop;
+            int marginRight = frameType.ImageInFrames[0].MarginRight;
+            int marginBottom = frameType.ImageInFrames[0].MarginBottom;
             
             // Tính tổng lề của các cạnh
             int totalHorizontalMargin = marginLeft + marginRight;
@@ -76,7 +76,7 @@ public class RenderManager
         }
         return result;
     }
-    public static Bitmap CombineImage(FrameType frameType, List<ImageInFrame> imageInFrames)
+    public static Bitmap CombineImage(FrameType frameType, List<Image> imageInFrames)
     {
         var itemHeight = imageInFrames[0].Height;
         var itemWidth = imageInFrames[0].Width;
@@ -88,16 +88,16 @@ public class RenderManager
         Bitmap[] items = new Bitmap[imageInFrames.Count];
         for (int i = 0; i < items.Length; i++)
         {
-            items[i] = new Bitmap(imageInFrames[i].Image);
+            items[i] = new Bitmap(imageInFrames[i]);
         }
 
         using (Graphics g = Graphics.FromImage(result0))
         {
             int index = 0;
-            int marginLeft = imageInFrames[0].MarginLeft;
-            int marginTop = imageInFrames[0].MarginTop;
-            int marginRight = imageInFrames[0].MarginRight;
-            int marginBottom = imageInFrames[0].MarginBottom;
+            int marginLeft = frameType.ImageInFrames[0].MarginLeft;
+            int marginTop = frameType.ImageInFrames[0].MarginTop;
+            int marginRight = frameType.ImageInFrames[0].MarginRight;
+            int marginBottom = frameType.ImageInFrames[0].MarginBottom;
 
             // Tính tổng lề của các cạnh
             int totalHorizontalMargin = marginLeft + marginRight;
