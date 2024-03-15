@@ -18,7 +18,7 @@ public class FrameType
     public string Code { get; set; }
     public string Description { get; set; }
     public List<(Image, string)> BackgroundImages { get; set; }
-    public List<ImageInFrame> ImageInFrames { get; set; }
+    public ImageInFrame ImageInFrame { get; set; }
     public FrameTheme Theme { get; set; }
 }
 public class FrameImage
