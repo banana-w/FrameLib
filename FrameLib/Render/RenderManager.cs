@@ -40,9 +40,9 @@ public class RenderManager
             g.InterpolationMode = InterpolationMode.HighQualityBicubic;
 
             // Vẽ từng item lên bitmap result với lề
-            for (int row = 0; row < frameType.Row; row++) // 3 hàng
+            for (int row = 0; row < frameType.Row; row++) // hàng
             {
-                for (int col = 0; col < frameType.Colum; col++) // 2 item mỗi hàng
+                for (int col = 0; col < frameType.Colum; col++) // item mỗi hàng
                 {
                     int x = marginLeft + col * itemWidthWithMargin;
                     int y = marginTop + row * itemHeightWithMargin;
@@ -107,6 +107,7 @@ public class RenderManager
             int itemWidthWithMargin = itemWidth + totalHorizontalMargin;
             int itemHeightWithMargin = itemHeight + totalVerticalMargin;
             g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            g.Clear(Color.White);
             // Vẽ từng item lên bitmap result với lề
             for (int row = 0; row < frameType.Row; row++) // 3 hàng
             {

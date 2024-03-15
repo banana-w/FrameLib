@@ -29,7 +29,7 @@ namespace TestImage.Frame
             Colum = (int)Type1.Col,
             Row = (int)Type1.Row,
             Code = "4a",
-            ImageInFrame =
+            ImageInFrame = new()
                 {
                     Width = (int)Type1.ImageWidth,
                     Height = (int)Type1.ImageHeight,
@@ -49,7 +49,7 @@ namespace TestImage.Frame
             Colum = (int)Type2.Col,
             Row = (int)Type2.Row,
             Code = "1a",
-            ImageInFrame =
+            ImageInFrame = new()
                 {
                     Width = (int) Type2.ImageWidth,
                     Height = (int) Type2.ImageHeight,
@@ -69,7 +69,7 @@ namespace TestImage.Frame
             Colum = (int)Type3.Col,
             Row = (int)Type3.Row,
             Code = "6a",
-            ImageInFrame =
+            ImageInFrame = new()
                 {
                     Width = (int) Type3.ImageWidth,
                     Height = (int) Type3.ImageHeight,

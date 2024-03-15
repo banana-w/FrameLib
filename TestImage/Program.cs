@@ -26,16 +26,23 @@ class Program
 
 
         Image image = Image.FromFile("C:/Users/Admin/Downloads/anh1.png");
+        Image image2 = Image.FromFile("C:/Users/Admin/Downloads/anh1.png");
+        Image image3 = Image.FromFile("C:/Users/Admin/Downloads/anh1.png");
+        Image image4 = Image.FromFile("C:/Users/Admin/Downloads/anh1.png");
         list.Add(image);
+        list.Add(image2);
+        list.Add(image3);
+        list.Add(image4);
 
 
 
         Frames.Instance.LoadListType();
-        Frames.Instance.LoadTypeImage("C:/Users/Admin/Desktop/PNG/TYPE1", "1a");
+        Frames.Instance.LoadTypeImage("C:/Users/Admin/Desktop/PNG/TYPE1", "4a");
         Frames.Instance.LoadTypeImage("C:/Users/Admin/Desktop/PNG", "2a");
         //RenderManager.Render(Frames.Instance.GetType("1a"), "FALL_abc.png", list);
-        Bitmap result = RenderManager.CombineImage(Frames.Instance.GetType("1a"), list);
-        result.Save("cc.png");
+        Bitmap result = RenderManager.CombineImage(Frames.Instance.GetType("4a"), list);
+        Bitmap r2 = RenderManager.FrameImage(Frames.Instance.GetType("4a"), result, "CUOI_abc.png");
+        r2.Save("cc.png");
         //RenderManager.FrameImage(Frames.Instance.GetType("1a"), result, "FALL_abc.png");
         //RenderManager.Render(Frames.Instance.GetType("1a"), "5x5 01.png", list);
 
