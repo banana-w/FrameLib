@@ -6,15 +6,15 @@ namespace TestImage.Render;
 
 public class RenderManager
 {
-    public static Bitmap Render(FrameType frameType,string fileName, List<Image> imageInFrames)
+    public static Bitmap Render(FrameType frameType, string fileName, List<Image> imageInFrames)
     {
-        var itemHeight = frameType.ImageInFrames[0].Height;
-        var itemWidth = frameType.ImageInFrames[0].Width;
+        var itemHeight = frameType.ImageInFrame.Height;
+        var itemWidth = frameType.ImageInFrame.Width;
         var totalWidth = frameType.Width;
         var totalHeight = frameType.Height;
 
         Bitmap result0 = new Bitmap(totalWidth, totalHeight);
-        
+
         Bitmap[] items = new Bitmap[imageInFrames.Count];
         for (int i = 0; i < items.Length; i++)
         {
@@ -24,11 +24,11 @@ public class RenderManager
         using (Graphics g = Graphics.FromImage(result0))
         {
             int index = 0;
-            int marginLeft = frameType.ImageInFrames[0].MarginLeft;
-            int marginTop = frameType.ImageInFrames[0].MarginTop;
-            int marginRight = frameType.ImageInFrames[0].MarginRight;
-            int marginBottom = frameType.ImageInFrames[0].MarginBottom;
-            
+            int marginLeft = frameType.ImageInFrame.MarginLeft;
+            int marginTop = frameType.ImageInFrame.MarginTop;
+            int marginRight = frameType.ImageInFrame.MarginRight;
+            int marginBottom = frameType.ImageInFrame.MarginBottom;
+
             // Tính tổng lề của các cạnh
             int totalHorizontalMargin = marginLeft + marginRight;
             int totalVerticalMargin = marginTop + marginBottom;
@@ -36,7 +36,7 @@ public class RenderManager
             // Tính tổng chiều rộng và chiều cao của mỗi item kèm theo lề
             int itemWidthWithMargin = itemWidth + totalHorizontalMargin;
             int itemHeightWithMargin = itemHeight + totalVerticalMargin;
-            
+
             g.InterpolationMode = InterpolationMode.HighQualityBicubic;
 
             // Vẽ từng item lên bitmap result với lề
@@ -61,8 +61,8 @@ public class RenderManager
         var image = twoItems.Item1;
         if (image == null) return null;
 
-        Bitmap frame = new Bitmap(image); 
-        
+        Bitmap frame = new Bitmap(image);
+
         Bitmap result = new Bitmap(frame.Width, frame.Height);
 
         // Tạo graphics object để vẽ lên bitmap result
@@ -78,8 +78,8 @@ public class RenderManager
     }
     public static Bitmap CombineImage(FrameType frameType, List<Image> imageInFrames)
     {
-        var itemHeight = frameType.ImageInFrames[0].Height;
-        var itemWidth = frameType.ImageInFrames[0].Width;
+        var itemHeight = frameType.ImageInFrame.Height;
+        var itemWidth = frameType.ImageInFrame.Width;
         var totalWidth = frameType.Width;
         var totalHeight = frameType.Height;
 
@@ -94,10 +94,10 @@ public class RenderManager
         using (Graphics g = Graphics.FromImage(result0))
         {
             int index = 0;
-            int marginLeft = frameType.ImageInFrames[0].MarginLeft;
-            int marginTop = frameType.ImageInFrames[0].MarginTop;
-            int marginRight = frameType.ImageInFrames[0].MarginRight;
-            int marginBottom = frameType.ImageInFrames[0].MarginBottom;
+            int marginLeft = frameType.ImageInFrame.MarginLeft;
+            int marginTop = frameType.ImageInFrame.MarginTop;
+            int marginRight = frameType.ImageInFrame.MarginRight;
+            int marginBottom = frameType.ImageInFrame.MarginBottom;
 
             // Tính tổng lề của các cạnh
             int totalHorizontalMargin = marginLeft + marginRight;
