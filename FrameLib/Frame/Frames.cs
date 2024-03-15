@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TestImage.Constant;
-using TestImage.Render;
-using TestImage.Utils;
+﻿using TestImage.Utils;
 using static TestImage.Constant.PhotoParemeters;
 
 namespace TestImage.Frame
