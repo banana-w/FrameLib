@@ -23,8 +23,8 @@ public class PhotoParemeters
     }
     public enum Type2
     {
-        Width = 1806, Height = 1211, Row = 1, Col = 1,
-        ImageWidth = 1625, ImageHeight = 1085,
+        Width = 1500, Height = 1500, Row = 1, Col = 1,
+        ImageWidth = 1370, ImageHeight = 1220,
         MarginTop = 65,
         MarginBottom = 65,
         MarginLeft = 65,

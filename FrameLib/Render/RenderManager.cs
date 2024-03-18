@@ -42,7 +42,7 @@ public class RenderManager
             // Vẽ từng item lên bitmap result với lề
             for (int row = 0; row < frameType.Row; row++) // hàng
             {
-                for (int col = 0; col < frameType.Colum; col++) // item mỗi hàng
+                for (int col = 0; col < frameType.Column; col++) // item mỗi hàng
                 {
                     int x = marginLeft + col * itemWidthWithMargin;
                     int y = marginTop + row * itemHeightWithMargin;
@@ -111,7 +111,7 @@ public class RenderManager
             // Vẽ từng item lên bitmap result với lề
             for (int row = 0; row < frameType.Row; row++) // 3 hàng
             {
-                for (int col = 0; col < frameType.Colum; col++) // 2 item mỗi hàng
+                for (int col = 0; col < frameType.Column; col++) // 2 item mỗi hàng
                 {
                     int x = marginLeft + col * itemWidthWithMargin;
                     int y = marginTop + row * itemHeightWithMargin;
@@ -138,7 +138,6 @@ public class RenderManager
 
         Bitmap result = new Bitmap(frame.Width, frame.Height);
 
-        // Tạo graphics object để vẽ lên bitmap result
         using (Graphics g = Graphics.FromImage(result))
         {
             g.InterpolationMode = InterpolationMode.HighQualityBicubic;
@@ -150,7 +149,7 @@ public class RenderManager
         }
 
         return result;
-        // Giải phóng bộ nhớ
+
         //portrait.Dispose();
         //frame.Dispose();
         //result0.Dispose();

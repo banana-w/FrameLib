@@ -1,9 +1,24 @@
 ﻿using ICSharpCode.SharpZipLib.Core;
 using ICSharpCode.SharpZipLib.Zip;
-using System.Drawing;    
+using Newtonsoft.Json;
+using System.Drawing;
+using System.Text.Json;
+using TestImage.Frame;
 
 namespace TestImage.Utils
 {
+    public class ReadAndParseJsonFileWithSystemTextJson
+    {
+        public static List<FrameType> UseFileOpenReadTextWithSystemTextJson(string jsonFilePath)
+        {
+            using FileStream json = File.OpenRead(jsonFilePath);
+            List<FrameType> types = System.Text.Json.JsonSerializer.Deserialize<List<FrameType>>(json);
+
+            return types;
+        }
+
+
+    }
     public class Util
     {
         public static List<(Image,string)> LoadImagesFromFolder(string folderPath)

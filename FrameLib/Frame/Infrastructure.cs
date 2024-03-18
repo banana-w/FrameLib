@@ -4,23 +4,31 @@ using static TestImage.Constant.PhotoParemeters;
 namespace TestImage.Frame;
 
 public class FrameType
-{
+{   
     public int Width { get; set; }
     public int Height { get; set; }
-    public int Colum { get; set; }
+    public int Column { get; set; }
     public int Row { get; set; }
     public string Name { get; set; }
     public string Code { get; set; }
     public string Description { get; set; }
     public List<(Image, string)> BackgroundImages { get; set; }
     public ImageInFrame ImageInFrame { get; set; }
-    public FrameTheme Theme { get; set; }
 }
-public class FrameImage
+public class PhotoParams
 {   
+    public string Id { get; set; }
     public int Width { get; set; }
     public int Height { get; set; }
-    public Image Image { get; set; }
+    public int Colum { get; set; }
+    public int Row { get; set; }
+    public int ItemWidth { get; set; }
+    public int ItemHeight { get; set; }
+    public int MarginTop { get; set; }
+    public int MarginBottom { get; set; }
+    public int MarginLeft { get; set; }
+    public int MarginRight { get; set; }
+
 }
 public class ImageInFrame : IComparable<ImageInFrame>
 {
@@ -47,7 +55,6 @@ public class ImageInFrame : IComparable<ImageInFrame>
             return this.TopLeft.Y.CompareTo(other.TopLeft.Y);
         }
         return -1;
-
     }
 }
 
