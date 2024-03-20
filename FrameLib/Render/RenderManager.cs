@@ -76,7 +76,7 @@ public class RenderManager
         }
         return result;
     }
-    public static Bitmap CombineImage(FrameType frameType, List<Image> imageInFrames)
+    public static Bitmap GhepHinh(FrameType frameType, List<Image> imageInFrames)
     {
         var itemHeight = frameType.ImageInFrame.Height;
         var itemWidth = frameType.ImageInFrame.Width;
@@ -99,19 +99,16 @@ public class RenderManager
             int marginRight = frameType.ImageInFrame.MarginRight;
             int marginBottom = frameType.ImageInFrame.MarginBottom;
 
-            // Tính tổng lề của các cạnh
             int totalHorizontalMargin = marginLeft + marginRight;
             int totalVerticalMargin = marginTop + marginBottom;
 
-            // Tính tổng chiều rộng và chiều cao của mỗi item kèm theo lề
             int itemWidthWithMargin = itemWidth + totalHorizontalMargin;
             int itemHeightWithMargin = itemHeight + totalVerticalMargin;
             g.InterpolationMode = InterpolationMode.HighQualityBicubic;
             g.Clear(Color.White);
-            // Vẽ từng item lên bitmap result với lề
-            for (int row = 0; row < frameType.Row; row++) // 3 hàng
+            for (int row = 0; row < frameType.Row; row++) // hàng
             {
-                for (int col = 0; col < frameType.Column; col++) // 2 item mỗi hàng
+                for (int col = 0; col < frameType.Column; col++) // item mỗi hàng
                 {
                     int x = marginLeft + col * itemWidthWithMargin;
                     int y = marginTop + row * itemHeightWithMargin;
@@ -126,7 +123,7 @@ public class RenderManager
         }
         return result0;
     }
-    public static Bitmap FrameImage(FrameType frameType, Bitmap result0, string fileName)
+    public static Bitmap GhepBackground(FrameType frameType, Bitmap result0, string fileName)
     {
         Bitmap portrait = result0;
         var twoItems = frameType.BackgroundImages.Where(x => x.Item2.Equals(fileName)).FirstOrDefault();
@@ -141,11 +138,16 @@ public class RenderManager
         using (Graphics g = Graphics.FromImage(result))
         {
             g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-            // Vẽ tấm hình chân dung lên bitmap result
             g.DrawImage(portrait, 0, 0, frame.Width, frame.Height);
-
-            // Vẽ tấm hình frame lên bitmap result
             g.DrawImage(frame, 0, 0, frame.Width, frame.Height);
+            
+            string currentTime = DateTime.Now.ToString("dd.MM.yyyy");
+            Font font = new Font("Consolas", 30, FontStyle.Regular);
+            Color customColor = Color.FromArgb(111, 98, 82);
+
+            SolidBrush brush = new SolidBrush(customColor);       
+            g.DrawString(currentTime, font, brush, new PointF(719, 1741));
+
         }
 
         return result;

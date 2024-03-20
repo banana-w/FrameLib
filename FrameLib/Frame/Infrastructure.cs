@@ -15,21 +15,6 @@ public class FrameType
     public List<(Image, string)> BackgroundImages { get; set; }
     public ImageInFrame ImageInFrame { get; set; }
 }
-public class PhotoParams
-{   
-    public string Id { get; set; }
-    public int Width { get; set; }
-    public int Height { get; set; }
-    public int Colum { get; set; }
-    public int Row { get; set; }
-    public int ItemWidth { get; set; }
-    public int ItemHeight { get; set; }
-    public int MarginTop { get; set; }
-    public int MarginBottom { get; set; }
-    public int MarginLeft { get; set; }
-    public int MarginRight { get; set; }
-
-}
 public class ImageInFrame : IComparable<ImageInFrame>
 {
     public int Width { get; set; }

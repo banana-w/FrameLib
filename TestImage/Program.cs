@@ -9,20 +9,10 @@ using System.Drawing.Drawing2D;
 using TestImage.Frame;
 using TestImage.Render;
 using TestImage.Utils;
-using static TestImage.Constant.PhotoParemeters;
-
 
 class Program
 {
-    private static UserCredential Login(string GClientId, string GClientSecret)
-    {
-        ClientSecrets secrets = new()
-        {
-            ClientId = GClientId,
-            ClientSecret = GClientSecret
-        };
-        return GoogleWebAuthorizationBroker.AuthorizeAsync(secrets, new[] { "https://www.googleapis.com/auth/drive.readonly" }, "user", CancellationToken.None).Result;
-    }
+    
     static void Main()
     {
         var list = new List<Image>();
@@ -53,11 +43,9 @@ class Program
         
         var b = Frames.Instance(list1);
         b.LoadTypeImage("C:/Users/Admin/Desktop/PNG/TYPE1", "4a");
-      
         Bitmap result = RenderManager.CombineImage(b.GetType("4a"), list);
         result = RenderManager.FrameImage(b.GetType("4a"), result, "CUOI_abc.png");
         result.Save("cc.png");
-
     }
 
 }
