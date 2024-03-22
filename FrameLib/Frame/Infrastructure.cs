@@ -15,6 +15,13 @@ public class FrameType
     public List<(Image, string)> BackgroundImages { get; set; }
     public ImageInFrame ImageInFrame { get; set; }
 }
+public class IconInImage
+{
+    public Bitmap IconBitmap { get; set; }
+    public Point Position { get; set; }
+    public Size Size { get; set; }
+
+}
 public class ImageInFrame : IComparable<ImageInFrame>
 {
     public int Width { get; set; }

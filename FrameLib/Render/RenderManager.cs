@@ -157,4 +157,31 @@ public class RenderManager
         //result0.Dispose();
         //result.Dispose();
     }
+    public static Bitmap RenderIcons(Bitmap bitmap, List<IconInImage> icons)
+    {
+        // Kiểm tra nếu bitmap là null
+        if (bitmap == null)
+        {
+            throw new ArgumentNullException(nameof(bitmap), "Bitmap cannot be null.");
+        }
+
+        // Tạo một bitmap mới với kích thước của bitmap đầu vào
+        Bitmap result = new Bitmap(bitmap.Width, bitmap.Height);
+
+        // Sử dụng Graphics để vẽ lên bitmap mới
+        using (Graphics g = Graphics.FromImage(result))
+        {
+            // Vẽ hình bitmap đầu vào lên bitmap mới            
+            g.DrawImage(bitmap, 0, 0, bitmap.Width, bitmap.Height);
+
+            // Vẽ các icon lên bitmap mới tại vị trí được chỉ định
+            foreach (IconInImage icon in icons)
+            {
+                g.DrawImage(icon.IconBitmap, new Rectangle(icon.Position, icon.Size));
+            }
+        }
+
+        return result;
+    }
+
 }
