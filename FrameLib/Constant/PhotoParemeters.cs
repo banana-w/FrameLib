@@ -1,4 +1,4 @@
-﻿namespace TestImage.Constant;
+﻿namespace FrameLib.Constant;
 
 public class PhotoParemeters
 {

@@ -5,7 +5,7 @@ using Google.Apis.Drive.v3.Data;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
 
-namespace TestImage.Drive
+namespace FrameLib.Drive
 {
     public class DriveDownload
     {
@@ -57,7 +57,7 @@ namespace TestImage.Drive
                         {
                             case DownloadStatus.Downloading:
                                 {
-                                    Console.WriteLine(progress.BytesDownloaded);
+                                    Console.WriteLine($"{progress.BytesDownloaded * 0.001} KB");
                                     break;
                                 }
                             case DownloadStatus.Completed:

@@ -1,18 +1,17 @@
 ﻿using ICSharpCode.SharpZipLib.Core;
 using ICSharpCode.SharpZipLib.Zip;
-using Newtonsoft.Json;
 using System.Drawing;
 using System.Text.Json;
-using TestImage.Frame;
+using FrameLib.Frame;
 
-namespace TestImage.Utils
+namespace FrameLib.Utils
 {
     public class ReadAndParseJsonFileWithSystemTextJson
     {
         public static List<FrameType> UseFileOpenReadTextWithSystemTextJson(string jsonFilePath)
         {
             using FileStream json = File.OpenRead(jsonFilePath);
-            List<FrameType> types = System.Text.Json.JsonSerializer.Deserialize<List<FrameType>>(json);
+            List<FrameType> types = JsonSerializer.Deserialize<List<FrameType>>(json);
 
             return types;
         }

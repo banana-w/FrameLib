@@ -6,9 +6,9 @@ using Newtonsoft.Json;
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using TestImage.Frame;
-using TestImage.Render;
-using TestImage.Utils;
+using FrameLib.Frame;
+using FrameLib.Render;
+using FrameLib.Utils;
 
 class Program
 {
@@ -43,9 +43,9 @@ class Program
         
         var b = Frames.Instance(list1);
         b.LoadTypeImage("C:/Users/Admin/Desktop/PNG/TYPE1", "4a");
-        Bitmap result = RenderManager.CombineImage(b.GetType("4a"), list);
-        result = RenderManager.FrameImage(b.GetType("4a"), result, "CUOI_abc.png");
-        result.Save("cc.png");
+        Bitmap result = RenderManager.GhepHinh(b.GetType("4a"), list);
+        result = RenderManager.GhepBackground(b.GetType("4a"), result, "CUOI_abc.png");
+        result.Save("cc.png");    
     }
 
 }

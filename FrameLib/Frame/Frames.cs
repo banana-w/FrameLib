@@ -1,7 +1,7 @@
-﻿using TestImage.Utils;
-using static TestImage.Constant.PhotoParemeters;
+﻿using FrameLib.Utils;
+using static FrameLib.Constant.PhotoParemeters;
 
-namespace TestImage.Frame
+namespace FrameLib.Frame
 {
     public class Frames
     {   
