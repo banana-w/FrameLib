@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
-using static FrameLib.Constant.PhotoParemeters;
+using static FrameLib6.Constant.PhotoParemeters;
 
-namespace FrameLib.Frame;
+namespace FrameLib6.Frame;
 
 public class FrameType
 {   

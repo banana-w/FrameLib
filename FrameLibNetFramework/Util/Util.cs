@@ -2,17 +2,23 @@
 using ICSharpCode.SharpZipLib.Zip;
 using System.Drawing;
 using System.Text.Json;
-using FrameLib6.Frame;
+using FrameLib.Frame;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
 
-namespace FrameLib6.Utils
+namespace FrameLib.Utils
 {
     public class ReadAndParseJsonFileWithSystemTextJson
     {
         public static List<FrameType> UseFileOpenReadTextWithSystemTextJson(string jsonFilePath)
         {
-            using FileStream json = File.OpenRead(jsonFilePath);
+            FileStream json = File.OpenRead(jsonFilePath);
             List<FrameType> types = JsonSerializer.Deserialize<List<FrameType>>(json);
-
+            json.Dispose();
             return types;
         }
 
@@ -22,7 +28,7 @@ namespace FrameLib6.Utils
     {
         public static List<(Image,string)> LoadImagesFromFolder(string folderPath)
         {
-            List<(Image, string)> images = new();
+            List<(Image, string)> images = new List<(Image, string)>();
 
             try
             {
@@ -39,7 +45,7 @@ namespace FrameLib6.Utils
                     // Lặp qua từng đường dẫn và tải hình ảnh vào danh sách
                     foreach (string imagePath in imagePaths)
                     {
-                        using (FileStream fs = new(imagePath, FileMode.Open, FileAccess.Read))
+                        using (FileStream fs = new FileStream(imagePath, FileMode.Open, FileAccess.Read))
                         {
                             Image img = Image.FromStream(fs);
                             string name = Path.GetFileName(imagePath);

@@ -1,22 +1,25 @@
 ﻿using FrameLib.Utils;
 using static FrameLib.Constant.PhotoParemeters;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace FrameLib6.Frame
+namespace FrameLib.Frame
 {
     public class Frames
-    {   
+    {
         private Frames(List<FrameType> list)
         {
-            FrameTypes = new();
             FrameTypes = list;
         }
-        public List<FrameType>? FrameTypes { get; }
+        public List<FrameType> FrameTypes { get; }
         private static Frames instance = null;
         public static Frames Instance(List<FrameType> list)
         {
-                instance ??= new Frames(list);
-                return instance;
-            
+            if (instance == null) { instance = new Frames(list); }
+            return instance;
         }
         public bool LoadTypeImage(string folderPath, string id)
         {

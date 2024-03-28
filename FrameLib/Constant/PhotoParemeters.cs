@@ -1,4 +1,4 @@
-﻿namespace FrameLib.Constant;
+﻿namespace FrameLib6.Constant;
 
 public class PhotoParemeters
 {

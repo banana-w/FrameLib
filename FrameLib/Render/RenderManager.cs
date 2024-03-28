@@ -1,8 +1,8 @@
 ﻿using System.Drawing;
 using System.Drawing.Drawing2D;
-using FrameLib.Frame;
+using FrameLib6.Frame;
 
-namespace FrameLib.Render;
+namespace FrameLib6.Render;
 
 public class RenderManager
 {
