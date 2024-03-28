@@ -96,7 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constant\PhotoParemeters.cs" />
-    <Compile Include="Drive\DriveDownload.cs" />
+    <Compile Include="Drive\GoogleDrive.cs" />
     <Compile Include="Drive\SearchFile.cs" />
     <Compile Include="Frame\Frames.cs" />
     <Compile Include="Frame\Infrastructure.cs" />

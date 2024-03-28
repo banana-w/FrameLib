@@ -6,9 +6,9 @@ using Newtonsoft.Json;
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using FrameLib.Frame;
-using FrameLib.Render;
-using FrameLib.Utils;
+using FrameLib6.Frame;
+using FrameLib6.Render;
+using FrameLib6.Utils;
 
 class Program
 {

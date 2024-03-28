@@ -1,4 +1,5 @@
-﻿using FrameLib.Frame;
+﻿using FrameLib.Drive;
+using FrameLib.Frame;
 using FrameLib.Render;
 using FrameLib.Utils;
 using System;
@@ -37,13 +38,18 @@ namespace netFrameworkTest
             //RenderManager.FrameImage(Frames.Instance.GetType("1a"), result, "FALL_abc.png");
             //RenderManager.Render(Frames.Instance.GetType("1a"), "5x5 01.png", list);
 
-            var list1 = ReadAndParseJsonFileWithSystemTextJson.UseFileOpenReadTextWithSystemTextJson("D:\\HOC\\Intern\\Workspace\\TestImage\\TestImage\\FrameType.json");
-
-            var b = Frames.Instance(list1);
-            b.LoadTypeImage("C:/Users/Admin/Desktop/PNG/TYPE1", "4a");
-            Bitmap result = RenderManager.GhepHinh(b.GetType("4a"), list);
-            result = RenderManager.GhepBackground(b.GetType("4a"), result, "CUOI_abc.png");
-            result.Save("cc.png");
+            //var list1 = ReadAndParseJsonFileWithSystemTextJson.UseFileOpenReadTextWithSystemTextJson("D:\\HOC\\Intern\\Workspace\\TestImage\\TestImage\\FrameType.json");
+            //var b = Frames.Instance(list1);
+            //b.LoadTypeImage("C:/Users/Admin/Desktop/PNG/TYPE1", "4a");
+            //Bitmap result = RenderManager.GhepHinh(b.GetType("4a"), list);
+            //result = RenderManager.GhepBackground(b.GetType("4a"), result, "FALL_abc.png");
+            //result.Save("cc.png");
+            var authPath = "C:/Users/Admin/Downloads/credentials.json";
+            var savePath = "D:/testmagik";
+            var filePath = "D:\\testmagik\\result.jpg";
+            //DriveDownload.DriveDownloadFile(authPath, savePath, "TYPE1.zip");
+            GoogleDrive.DriveUploadToFolder(authPath, filePath, "16sNxIo9knl4LSaONOcTmbsCk-MUOBwiz");
         }
+
     }
 }
