@@ -127,7 +127,7 @@ namespace FrameLib.Drive
                 // Upload file photo.jpg in specified folder on drive.
                 var fileMetadata = new Google.Apis.Drive.v3.Data.File()
                 {
-                    Name = "photo.jpg",
+                    Name = "ToiYeuFPT.jpg",
                     Parents = new List<string>
                     {
                         folderId
