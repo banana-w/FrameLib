@@ -2,12 +2,16 @@
 using Google.Apis.Download;
 using Google.Apis.Drive.v3;
 using Google.Apis.Drive.v3.Data;
+using Google.Apis.Requests;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net.Http;
+using System.Text.RegularExpressions;
 using System.Threading;
+using static System.Net.WebRequestMethods;
 
 namespace FrameLib.Drive
 {
@@ -96,7 +100,7 @@ namespace FrameLib.Drive
             }
             return fullFilePath;
         }
-        public static Google.Apis.Drive.v3.Data.File DriveUploadToFolder
+        public static string DriveUploadToFolder
             (string authPath,string filePath, string folderId)
         {
             try
@@ -137,13 +141,24 @@ namespace FrameLib.Drive
                     // Create a new file, with metadata and stream.
                     request = service.Files.Create(
                         fileMetadata, stream, "image/jpeg");
-                    request.Fields = "id";
+                    request.Fields = "id, webViewLink";
+                    request.IncludePermissionsForView = "published";
                     request.Upload();
                 }
+                
                 var file = request.ResponseBody;
-                // Prints the uploaded file id.
-                Console.WriteLine("File ID: " + file.Id);
-                return file;
+
+                Permission userPermission = new Permission()
+                {
+                    Type = "anyone",
+                    Role = "reader"
+                };
+
+                var permission = service.Permissions.Create(userPermission, file.Id);
+                permission.Fields = "id";
+                permission.Execute();
+                Console.WriteLine(file.WebViewLink);
+                return file.WebViewLink;
             }
             catch (Exception e)
             {
@@ -159,6 +174,79 @@ namespace FrameLib.Drive
                 else if (e is DirectoryNotFoundException)
                 {
                     Console.WriteLine("Directory Not found");
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return null;
+        }
+        public static IList<String> DriveShareFile(string realFileId, string realUser, string realDomain)
+        {
+            try
+            {
+                /* Load pre-authorized user credentials from the environment.
+                 TODO(developer) - See https://developers.google.com/identity for
+                 guides on implementing OAuth2 for your application. */
+                GoogleCredential credential = GoogleCredential.GetApplicationDefault()
+                    .CreateScoped(DriveService.Scope.Drive);
+
+                // Create Drive API service.
+                var service = new DriveService(new BaseClientService.Initializer
+                {
+                    HttpClientInitializer = credential,
+                    ApplicationName = "Drive API Snippets"
+                });
+
+                var ids = new List<String>();
+                var batch = new BatchRequest(service);
+                BatchRequest.OnResponse<Permission> callback = delegate (
+                    Permission permission,
+                    RequestError error,
+                    int index,
+                    HttpResponseMessage message)
+                {
+                    if (error != null)
+                    {
+                        // Handle error
+                        Console.WriteLine(error.Message);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Permission ID: " + permission.Id);
+                    }
+                };
+                Permission userPermission = new Permission()
+                {
+                    Type = "user",
+                    Role = "writer",
+                    EmailAddress = realUser
+                };
+
+                var request = service.Permissions.Create(userPermission, realFileId);
+                request.Fields = "id";
+                batch.Queue(request, callback);
+
+                Permission domainPermission = new Permission()
+                {
+                    Type = "domain",
+                    Role = "reader",
+                    Domain = realDomain
+                };
+                request = service.Permissions.Create(domainPermission, realFileId);
+                request.Fields = "id";
+                batch.Queue(request, callback);
+                var task = batch.ExecuteAsync();
+                task.Wait();
+                return ids;
+            }
+            catch (Exception e)
+            {
+                // TODO(developer) - handle error appropriately
+                if (e is AggregateException)
+                {
+                    Console.WriteLine("Credential Not found");
                 }
                 else
                 {

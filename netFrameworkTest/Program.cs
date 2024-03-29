@@ -49,6 +49,7 @@ namespace netFrameworkTest
             var filePath = "D:\\testmagik\\result.jpg";
             //DriveDownload.DriveDownloadFile(authPath, savePath, "TYPE1.zip");
             GoogleDrive.DriveUploadToFolder(authPath, filePath, "16sNxIo9knl4LSaONOcTmbsCk-MUOBwiz");
+            Console.ReadLine();
         }
 
     }
