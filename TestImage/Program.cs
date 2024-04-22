@@ -42,9 +42,9 @@ class Program
         var list1 = ReadAndParseJsonFileWithSystemTextJson.UseFileOpenReadTextWithSystemTextJson("D:\\HOC\\Intern\\Workspace\\TestImage\\TestImage\\FrameType.json");
         
         var b = Frames.Instance(list1);
-        b.LoadTypeImage("C:/Users/Admin/Desktop/PNG/TYPE1", "4a");
-        Bitmap result = RenderManager.GhepHinh(b.GetType("4a"), list);
-        result = RenderManager.GhepBackground(b.GetType("4a"), result, "CUOI_abc.png");
+        b.LoadTypeImage("C:\\Users\\Admin\\Desktop\\PNG\\TYPE1", "6a");
+        Bitmap result = RenderManager.GhepHinh(b.GetType("6a"), list);
+        //result = RenderManager.GhepBackground(b.GetType("6a"), result, "2x6 02.png");
         result.Save("cc.png");    
     }
 

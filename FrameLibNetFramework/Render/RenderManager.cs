@@ -8,6 +8,9 @@ namespace FrameLib.Render
 {
     public class RenderManager
     {
+        private bool disposedValue;
+
+        private static Bitmap _result { get; set;}
         public static Bitmap Render(FrameType frameType, string fileName, List<Image> imageInFrames)
         {
             var itemHeight = frameType.ImageInFrame.Height;
@@ -84,8 +87,11 @@ namespace FrameLib.Render
             var itemWidth = frameType.ImageInFrame.Width;
             var totalWidth = frameType.Width;
             var totalHeight = frameType.Height;
+            if (_result == null)
+            {
+                _result = new Bitmap(totalWidth, totalHeight);
 
-            Bitmap result0 = new Bitmap(totalWidth, totalHeight);
+            }
 
             Bitmap[] items = new Bitmap[imageInFrames.Count];
             for (int i = 0; i < items.Length; i++)
@@ -93,7 +99,7 @@ namespace FrameLib.Render
                 items[i] = new Bitmap(imageInFrames[i]);
             }
 
-            using (Graphics g = Graphics.FromImage(result0))
+            using (Graphics g = Graphics.FromImage(_result))
             {
                 int index = 0;
                 int marginLeft = frameType.ImageInFrame.MarginLeft;
@@ -123,7 +129,57 @@ namespace FrameLib.Render
                     }
                 }
             }
-            return result0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                items[i].Dispose();
+            }   
+            return _result;
+        }
+        public static Bitmap Ghep1Hinh(FrameType frameType, List<Image> imageInFrames)
+        {
+            var itemHeight = frameType.ImageInFrame.Height;
+            var itemWidth = frameType.ImageInFrame.Width;
+            var totalWidth = frameType.Width;
+            var totalHeight = frameType.Height;
+
+            _result = new Bitmap(totalWidth, totalHeight);
+
+            Bitmap[] items = new Bitmap[imageInFrames.Count];
+            for (int i = 0; i < items.Length; i++)
+            {
+                items[i] = new Bitmap(imageInFrames[i]);
+            }
+
+            using (Graphics g = Graphics.FromImage(_result))
+            {
+                int index = 0;
+                int marginLeft = frameType.ImageInFrame.MarginLeft;
+                int marginTop = frameType.ImageInFrame.MarginTop;
+                int marginRight = frameType.ImageInFrame.MarginRight;
+                int marginBottom = frameType.ImageInFrame.MarginBottom;
+
+                int totalHorizontalMargin = marginLeft + marginRight;
+                int totalVerticalMargin = marginTop + marginBottom;
+
+                int itemWidthWithMargin = itemWidth + totalHorizontalMargin;
+                int itemHeightWithMargin = itemHeight + totalVerticalMargin;
+                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                g.Clear(Color.White);
+
+
+                int x = marginLeft;
+                int y = marginTop;
+
+                g.DrawImage(items[index], x, y, itemWidth, itemHeight);
+
+
+
+            }
+            for (int i = 0; i < items.Length; i++)
+            {
+                items[i].Dispose();
+            }
+            return _result;
         }
         public static Bitmap GhepBackground(FrameType frameType, Bitmap result0, string fileName)
         {
@@ -135,9 +191,9 @@ namespace FrameLib.Render
 
             Bitmap frame = new Bitmap(image);
 
-            Bitmap result = new Bitmap(frame.Width, frame.Height);
+            _result = new Bitmap(frame.Width, frame.Height);
 
-            using (Graphics g = Graphics.FromImage(result))
+            using (Graphics g = Graphics.FromImage(_result))
             {
                 g.InterpolationMode = InterpolationMode.HighQualityBicubic;
                 g.DrawImage(portrait, 0, 0, frame.Width, frame.Height);
@@ -151,11 +207,11 @@ namespace FrameLib.Render
                 g.DrawString(currentTime, font, brush, new PointF(719, 1741));
 
             }
+            portrait.Dispose();
+            frame.Dispose();
+            return _result;
 
-            return result;
-
-            //portrait.Dispose();
-            //frame.Dispose();
+           
             //result0.Dispose();
             //result.Dispose();
         }
@@ -192,6 +248,18 @@ namespace FrameLib.Render
             }
 
             return result;
+        }
+
+
+
+
+        public static void Dispose()
+        {
+            if(_result != null)
+            {
+                _result.Dispose();
+                _result = null;
+            }
         }
     }
 }

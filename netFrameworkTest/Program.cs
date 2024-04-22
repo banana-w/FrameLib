@@ -21,11 +21,14 @@ namespace netFrameworkTest
             Image image2 = Image.FromFile("C:/Users/Admin/Downloads/anh1.png");
             Image image3 = Image.FromFile("C:/Users/Admin/Downloads/anh1.png");
             Image image4 = Image.FromFile("C:/Users/Admin/Downloads/anh1.png");
+            Image image5 = Image.FromFile("C:/Users/Admin/Downloads/anh1.png");
+            Image image6 = Image.FromFile("C:/Users/Admin/Downloads/anh1.png");
             list.Add(image);
             list.Add(image2);
             list.Add(image3);
             list.Add(image4);
-
+            list.Add(image5);
+            list.Add(image6);
 
 
             //Frames.Instance.LoadListType();
@@ -38,17 +41,23 @@ namespace netFrameworkTest
             //RenderManager.FrameImage(Frames.Instance.GetType("1a"), result, "FALL_abc.png");
             //RenderManager.Render(Frames.Instance.GetType("1a"), "5x5 01.png", list);
 
-            //var list1 = ReadAndParseJsonFileWithSystemTextJson.UseFileOpenReadTextWithSystemTextJson("D:\\HOC\\Intern\\Workspace\\TestImage\\TestImage\\FrameType.json");
-            //var b = Frames.Instance(list1);
-            //b.LoadTypeImage("C:/Users/Admin/Desktop/PNG/TYPE1", "4a");
-            //Bitmap result = RenderManager.GhepHinh(b.GetType("4a"), list);
-            //result = RenderManager.GhepBackground(b.GetType("4a"), result, "FALL_abc.png");
-            //result.Save("cc.png");
+            var list1 = ReadAndParseJsonFileWithSystemTextJson.UseFileOpenReadTextWithSystemTextJson("D:\\HOC\\Intern\\Workspace\\TestImage\\TestImage\\FrameType.json");
+            var b = Frames.Instance(list1);
+            b.LoadTypeImage("C:/Users/Admin/Desktop/PNG/TYPE1", "6a");
+            b.LoadTypeImage("C:/Users/Admin/Desktop/PNG/TYPE1", "4a");
+    
+           
+
+
+            //result = RenderManager.GhepBackground(b.GetType("6a"), result, "2x6 02.png");
+            
+
+            Console.ReadLine();
             var authPath = "C:/Users/Admin/Downloads/credentials.json";
-            var savePath = "D:/testmagik";
+            
             var filePath = "D:\\testmagik\\result.jpg";
             //DriveDownload.DriveDownloadFile(authPath, savePath, "TYPE1.zip");
-            //GoogleDrive.DriveUploadToFolder(authPath, filePath, "16sNxIo9knl4LSaONOcTmbsCk-MUOBwiz");
+            //var a = GoogleDrive.DriveUploadToFolder(authPath, filePath, "16sNxIo9knl4LSaONOcTmbsCk-MUOBwiz");
             //Console.ReadLine();
         }
 
