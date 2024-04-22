@@ -250,9 +250,6 @@ namespace FrameLib.Render
             return result;
         }
 
-
-
-
         public static void Dispose()
         {
             if(_result != null)
