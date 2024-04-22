@@ -8,9 +8,10 @@ namespace FrameLib.Render
 {
     public class RenderManager
     {
-        private bool disposedValue;
 
         private static Bitmap _result { get; set;}
+        private static Bitmap _resultBg { get; set;}
+        private static Bitmap _resultIcon { get; set;}
         public static Bitmap Render(FrameType frameType, string fileName, List<Image> imageInFrames)
         {
             var itemHeight = frameType.ImageInFrame.Height;
@@ -135,52 +136,7 @@ namespace FrameLib.Render
             }   
             return _result;
         }
-        public static Bitmap Ghep1Hinh(FrameType frameType, List<Image> imageInFrames)
-        {
-            var itemHeight = frameType.ImageInFrame.Height;
-            var itemWidth = frameType.ImageInFrame.Width;
-            var totalWidth = frameType.Width;
-            var totalHeight = frameType.Height;
-
-            _result = new Bitmap(totalWidth, totalHeight);
-
-            Bitmap[] items = new Bitmap[imageInFrames.Count];
-            for (int i = 0; i < items.Length; i++)
-            {
-                items[i] = new Bitmap(imageInFrames[i]);
-            }
-
-            using (Graphics g = Graphics.FromImage(_result))
-            {
-                int index = 0;
-                int marginLeft = frameType.ImageInFrame.MarginLeft;
-                int marginTop = frameType.ImageInFrame.MarginTop;
-                int marginRight = frameType.ImageInFrame.MarginRight;
-                int marginBottom = frameType.ImageInFrame.MarginBottom;
-
-                int totalHorizontalMargin = marginLeft + marginRight;
-                int totalVerticalMargin = marginTop + marginBottom;
-
-                int itemWidthWithMargin = itemWidth + totalHorizontalMargin;
-                int itemHeightWithMargin = itemHeight + totalVerticalMargin;
-                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                g.Clear(Color.White);
-
-
-                int x = marginLeft;
-                int y = marginTop;
-
-                g.DrawImage(items[index], x, y, itemWidth, itemHeight);
-
-
-
-            }
-            for (int i = 0; i < items.Length; i++)
-            {
-                items[i].Dispose();
-            }
-            return _result;
-        }
+        
         public static Bitmap GhepBackground(FrameType frameType, Bitmap result0, string fileName)
         {
             Bitmap portrait = result0;
@@ -191,9 +147,9 @@ namespace FrameLib.Render
 
             Bitmap frame = new Bitmap(image);
 
-            _result = new Bitmap(frame.Width, frame.Height);
+            _resultBg = new Bitmap(frame.Width, frame.Height);
 
-            using (Graphics g = Graphics.FromImage(_result))
+            using (Graphics g = Graphics.FromImage(_resultBg))
             {
                 g.InterpolationMode = InterpolationMode.HighQualityBicubic;
                 g.DrawImage(portrait, 0, 0, frame.Width, frame.Height);
@@ -209,7 +165,7 @@ namespace FrameLib.Render
             }
             portrait.Dispose();
             frame.Dispose();
-            return _result;
+            return _resultBg;
 
            
             //result0.Dispose();
@@ -217,37 +173,29 @@ namespace FrameLib.Render
         }
         public static Bitmap RenderIcons(Bitmap bitmap, List<IconInImage> icons)
         {
-            // Kiểm tra nếu bitmap là null
             if (bitmap == null)
             {
                 throw new ArgumentNullException(nameof(bitmap), "Bitmap cannot be null.");
             }
 
-            // Tạo một bitmap mới với kích thước của bitmap đầu vào
-            Bitmap result = new Bitmap(bitmap.Width, bitmap.Height);
+            _resultIcon = new Bitmap(bitmap.Width, bitmap.Height);
 
-            // Sử dụng Graphics để vẽ lên bitmap mới
-            using (Graphics g = Graphics.FromImage(result))
+            using (Graphics g = Graphics.FromImage(_resultIcon))
             {
-                // Vẽ hình bitmap đầu vào lên bitmap mới
                 g.DrawImage(bitmap, 0, 0, bitmap.Width, bitmap.Height);
 
-                // Vẽ các icon lên bitmap mới tại vị trí được chỉ định
                 foreach (IconInImage icon in icons)
                 {
-                    // Tạo một bitmap mới từ ảnh icon và loại bỏ màu nền đen
                     Bitmap transparentIcon = new Bitmap(icon.IconBitmap);
                     transparentIcon.MakeTransparent(Color.Black);
 
-                    // Vẽ icon lên bitmap kết quả
                     g.DrawImage(transparentIcon, new Rectangle(icon.Position, icon.Size));
 
-                    // Giải phóng bộ nhớ của bitmap tạm thời
                     transparentIcon.Dispose();
                 }
             }
 
-            return result;
+            return _resultIcon;
         }
 
         public static void Dispose()
@@ -256,6 +204,16 @@ namespace FrameLib.Render
             {
                 _result.Dispose();
                 _result = null;
+            }
+            if (_resultIcon != null)
+            {
+                _resultIcon.Dispose();
+                _resultIcon = null;
+            }
+            if (_resultBg != null)
+            {
+                _resultBg.Dispose();
+                _resultBg = null;
             }
         }
     }
