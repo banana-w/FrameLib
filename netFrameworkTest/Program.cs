@@ -6,23 +6,32 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 namespace netFrameworkTest
 {
     internal class Program
     {
+        public static string HashPassword(string rawPassword)
+        {
+            using (var sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(rawPassword));
+                return Convert.ToBase64String(bytes);
+            }
+        }
         static void Main(string[] args)
         {
             var list = new List<Image>();
 
 
-            Image image = Image.FromFile("C:/Users/Admin/Downloads/anh1.png");
-            Image image2 = Image.FromFile("C:/Users/Admin/Downloads/anh1.png");
-            Image image3 = Image.FromFile("C:/Users/Admin/Downloads/anh1.png");
-            Image image4 = Image.FromFile("C:/Users/Admin/Downloads/anh1.png");
-            Image image5 = Image.FromFile("C:/Users/Admin/Downloads/anh1.png");
-            Image image6 = Image.FromFile("C:/Users/Admin/Downloads/anh1.png");
+            Image image = Image.FromFile(@"C:\Users\Admin\Desktop\Testing\abc.png");
+            Image image2 = Image.FromFile(@"C:\Users\Admin\Desktop\Testing\abc.png");
+            Image image3 = Image.FromFile(@"C:\Users\Admin\Desktop\Testing\abc.png");
+            Image image4 = Image.FromFile(@"C:\Users\Admin\Desktop\Testing\abc.png");
+            Image image5 = Image.FromFile(@"C:\Users\Admin\Desktop\Testing\abc.png");
+            Image image6 = Image.FromFile(@"C:\Users\Admin\Desktop\Testing\abc.png");
             list.Add(image);
             list.Add(image2);
             list.Add(image3);
@@ -39,204 +48,25 @@ namespace netFrameworkTest
             //Bitmap r2 = RenderManager.FrameImage(Frames.Instance.GetType("1a"), result, "CUOI_abc.png");
 
             //RenderManager.FrameImage(Frames.Instance.GetType("1a"), result, "FALL_abc.png");
-            //RenderManager.Render(Frames.Instance.GetType("1a"), "5x5 01.png", list);
 
-            var list1 = ReadAndParseJsonFileWithSystemTextJson.UseFileOpenReadTextWithSystemTextJson("D:\\HOC\\Intern\\Workspace\\TestImage\\TestImage\\FrameType.json");
+            var list1 = ReadAndParseJsonFileWithSystemTextJson.UseFileOpenReadTextWithSystemTextJson("D:\\HOC IN UNI\\Intern\\Workspace\\TestImage\\TestImage\\FrameType.json");
             var b = Frames.Instance(list1);
-            b.LoadTypeImage("C:/Users/Admin/Desktop/PNG/TYPE1", "6a");
-            b.LoadTypeImage("C:/Users/Admin/Desktop/PNG/TYPE1", "4a");
+            b.LoadTypeImage(@"C:\Users\Admin\Desktop\Testing", "4a");
 
 
-            
-    
-            RenderManager.GhepHinh(b.GetType("6a"), list).Save("hinh3.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
-            RenderManager.GhepHinh(b.GetType("4a"), list).Save("hinh2.png");
 
+            var ghephinh = RenderManager.GhepHinh(b.GetType("4a"), list);
+            ghephinh.Save(@"C:\Users\Admin\Desktop\Testing\ghep.jpg");
 
+            var result = RenderManager.GhepBackground(b.GetType("4a"), ghephinh, "bg.jpg");
+            result.Save(@"C:\Users\Admin\Desktop\Testing\result5.jpg");
             RenderManager.Dispose();
 
 
-            //result = RenderManager.GhepBackground(b.GetType("6a"), result, "2x6 02.png");
+            //result = rendermanager.ghepbackground(b.gettype("6a"), result, "2x6 02.png");
 
-
+            var a = HashPassword("khoa");
+            Console.WriteLine(a);
             Console.ReadLine();
             var authPath = "C:/Users/Admin/Downloads/credentials.json";
             

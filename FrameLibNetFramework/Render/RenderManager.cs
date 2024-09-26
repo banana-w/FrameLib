@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing.Drawing2D;
 using System;
 using System.Linq;
+using System.Drawing.Imaging;
 namespace FrameLib.Render
 {
     public class RenderManager
@@ -90,7 +91,7 @@ namespace FrameLib.Render
             var totalHeight = frameType.Height;
             if (_result == null)
             {
-                _result = new Bitmap(totalWidth, totalHeight);
+                _result = new Bitmap(totalWidth, totalHeight, PixelFormat.Format32bppArgb);
 
             }
 
@@ -114,7 +115,7 @@ namespace FrameLib.Render
                 int itemWidthWithMargin = itemWidth + totalHorizontalMargin;
                 int itemHeightWithMargin = itemHeight + totalVerticalMargin;
                 g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                g.Clear(Color.White);
+                g.Clear(Color.Transparent);
                 for (int row = 0; row < frameType.Row; row++) // hàng
                 {
                     for (int col = 0; col < frameType.Column; col++) // item mỗi hàng
@@ -152,8 +153,8 @@ namespace FrameLib.Render
             using (Graphics g = Graphics.FromImage(_resultBg))
             {
                 g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                g.DrawImage(portrait, 0, 0, frame.Width, frame.Height);
                 g.DrawImage(frame, 0, 0, frame.Width, frame.Height);
+                g.DrawImage(portrait, 0, 0, frame.Width, frame.Height);
 
                 string currentTime = DateTime.Now.ToString("dd.MM.yyyy");
                 Font font = new Font("Consolas", 30, FontStyle.Regular);
